@@ -71,6 +71,11 @@ namespace PhoneBook.Web.Controllers
 
         public async Task<IActionResult> DeleteInformationType(int informationTypeId)
         {
+            if ((await _contactInformationService.GetContactInformationsAsync()).Any(c => c.InformationTypeId == informationTypeId))
+            {
+                TempData["message"] = "Type related with contact informations!";
+                return RedirectToAction(nameof(InformationTypeIndex));
+            }
             await _informationTypeService.DeleteInformationTypeAsync(informationTypeId);
             return RedirectToAction(nameof(InformationTypeIndex));
         }
@@ -157,7 +162,7 @@ namespace PhoneBook.Web.Controllers
             if (informationTypes.Count() == 0)
             {
                 TempData["message"] = "Add types before creating contact informations!";
-                return RedirectToAction("ViewContact", new { contactId });   
+                return RedirectToAction("ViewContact", new { contactId });
             }
             var contact = await _contactService.GetContactAsync(contactId);
             var contactInformationModel = new ContactInformationCreateDto
@@ -177,7 +182,7 @@ namespace PhoneBook.Web.Controllers
                 Content = contactInformationModel.Content,
                 InformationTypeId = contactInformationModel.InformationTypeId
             };
-            await _contactInformationService.AddContactInformationAsync(contactInformation); 
+            await _contactInformationService.AddContactInformationAsync(contactInformation);
             return RedirectToAction("ViewContact", new { contactInformation.ContactId });
         }
 

@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Information Types";
     var no = 0;
+    var message = TempData["message"];
 }
 
 <h2>Information Types</h2>
@@ -51,4 +52,15 @@
             $('#myTable').DataTable();
         });
     </script>
+    @if (message != null)
+    {
+        <script>
+            $.toast({
+                heading: 'Error!',
+                text: '@message',
+                position: 'bottom-right',
+                icon: 'error'
+            });
+        </script>
+    }
 }
