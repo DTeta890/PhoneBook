@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PhoneBook.Repository\PhoneBook.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
