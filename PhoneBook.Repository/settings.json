@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "PhoneBookDatabase": "Host=localhost;Database=phonebook;Port=5432;Username=postgres;Password=dteta890"
+  }
+}

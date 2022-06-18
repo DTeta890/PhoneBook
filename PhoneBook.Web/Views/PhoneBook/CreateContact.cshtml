@@ -1,0 +1,41 @@
+﻿@model PhoneBook.Web.Models.PhoneBookViewModels.ContactCreateDto
+
+@{
+    ViewData["Title"] = "Create Contact";
+}
+
+<h2>Create Contact</h2>
+<div class="row">
+    <div class=" col-12">
+        <form asp-action="CreateContact" method="post">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label>Contact Name</label>
+                            <input asp-for="Name" class="form-control" required />
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>Contact Surname</label>
+                            <input asp-for="Surname" class="form-control" />
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>Contact Company</label>
+                            <input asp-for="Company" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="@Url.Action("ContactIndex", "PhoneBook" )" class="btn btn-info">
+                        <i class="fas fa-long-arrow-alt-left"></i>&nbsp; Back
+                    </a>
+                    <div class="float-right">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="far fa-save"></i>&nbsp; Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

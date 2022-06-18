@@ -1,0 +1,66 @@
+﻿@model PhoneBook.Web.Models.PhoneBookViewModels.ViewContactDto
+
+@{
+    ViewData["Title"] = "View Contact";
+    var message = TempData["message"];
+}
+
+<h2>View Contact: @Model.Name @Model.Surname (@Model.Company)</h2>
+<div class="row">
+    <div class=" col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a asp-action="CreateContactInformation" asp-route-contactId="@Model.UUID" class="btn btn-info btn-rounded"><i class="fas fa-plus-circle"></i>&nbsp; Create Contact Information</a>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        @foreach (var type in Model.InformationTypes)
+                        {
+                           <div class="row mt-2">
+                               <div class="col-md-12 card">
+                                   <div class="card-body">
+                                       <h4>@type.Name</h4>
+                           @foreach (var item in Model.ContactInformations.Where(c => c.InformationTypeId == type.UUID))
+                           {
+                                       <div class="col-md-4 text-left">
+                                           <span>@item.Content</span>&nbsp;
+                                           <a asp-action="EditContactInformation" asp-route-contactInformationId="@item.UUID" style="text-decoration: none" title="Edit">
+                                               <i class="far fa-edit"></i>
+                                           </a>
+                                           <a asp-action="DeleteContactInformation" asp-route-contactInformationId="@item.UUID" style="color:red;" title="Delete" onclick="return confirm('Are you sure you wish to delete this contact information?');">
+                                               <i class="fas fa-trash-alt"></i>
+                                           </a>
+                                       </div>
+                           } 
+                                   </div>
+                               </div>
+                           </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="@Url.Action("ContactIndex", "PhoneBook" )" class="btn btn-info">
+                    <i class="fas fa-long-arrow-alt-left"></i>&nbsp; Back
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @if (message != null)
+    {
+        <script>
+            $.toast({
+                heading: 'Warning!',
+                text: '@message',
+                position: 'bottom-right',
+                icon: 'warning'
+            });
+        </script>
+    }
+}
