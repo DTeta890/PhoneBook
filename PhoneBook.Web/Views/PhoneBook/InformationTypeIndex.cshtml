@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Information Types";
-    var no = 1;
+    var no = 0;
 }
 
 <h2>Information Types</h2>
@@ -10,7 +10,7 @@
     <div class="col-12">
         <div class="row">
             <div class="col-md-3">
-                <a asp-action="CreateInformationType" class="btn btn-info btn-rounded"><i class="fas fa-plus-circle"></i>Add Information Type</a>
+                <a asp-action="CreateInformationType" class="btn btn-info btn-rounded"><i class="fas fa-plus-circle"></i>&nbsp; Create Information Type</a>
             </div>
         </div>
         <div class="table-responsive mt-4">
@@ -19,8 +19,6 @@
                     <tr>
                         <th>No</th>
                         <th>Name</th>
-                        <th>Description</th>
-                        <th>Salary</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -32,9 +30,9 @@
                             <td>@no</td>
                             <td>@item.Name</td>
                             <td>
-                                <a asp-action="EditInformationType" asp-route-informationTypeId="@item.UUID" title="Edit">
+                                <a asp-action="EditInformationType" asp-route-informationTypeId="@item.UUID" style="text-decoration: none" title="Edit">
                                     <i class="far fa-edit"></i>
-                                </a>
+                                </a>&nbsp;
                                 <a asp-action="DeleteInformationType" asp-route-informationTypeId="@item.UUID" style="color:red;" title="Delete" onclick="return confirm('Are you sure you wish to delete this information type?');">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>

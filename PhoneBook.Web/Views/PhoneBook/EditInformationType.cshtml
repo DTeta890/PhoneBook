@@ -1,0 +1,34 @@
+﻿@model PhoneBook.Web.Models.PhoneBookViewModels.InformationTypeEditDto
+
+@{
+    ViewData["Title"] = "Edit Information Types";
+}
+
+<h2>Edit Information Type</h2>
+<div class="row">
+    <div class=" col-12">
+        <form asp-action="EditInformationType" method="post">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <input asp-for="UUID" value="@Model.UUID"hidden />
+                        <div class="col-md-4 form-group">
+                            <label>Information Type Name</label>
+                            <input asp-for="Name" class="form-control" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="@Url.Action("InformationTypeIndex", "PhoneBook" )" class="btn btn-info">
+                        <i class="fas fa-long-arrow-alt-left"></i>&nbsp; Back
+                    </a>
+                    <div class="float-right">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="far fa-save"></i>&nbsp; Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
