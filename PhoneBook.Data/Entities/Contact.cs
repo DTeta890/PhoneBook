@@ -2,7 +2,7 @@
 
 namespace PhoneBook.Data.Entities
 {
-    public class Contact
+    public class Contact : BaseEntity
     {
         public string Name { get; set; }
         public string Surname { get; set; }
