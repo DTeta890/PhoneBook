@@ -1,0 +1,12 @@
+*****Views*****
+InformationTypeIndex(List<InfoTypes>)
+CreateInformationType
+EditInformationType(InfoTypeID)
+
+ContactIndex(List<Contact>)
+CreateContact
+EditContact(ContactID)
+ViewContact(List<ContactInformation> Where ID = ContactID)
+
+CreateContactInformation(ContactID, List<InfoType>)
+EditContactInformation(ContactInfoID, ContactID, List<InfoType>)
