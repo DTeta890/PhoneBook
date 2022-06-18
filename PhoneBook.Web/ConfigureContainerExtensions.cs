@@ -21,7 +21,7 @@ namespace PhoneBook.Web
             serviceCollection.AddScoped<InformationTypeRepository, InformationTypeRepository>();
         }
 
-        public static void AddTransientServices(this IServiceCollection serviceCollection)
+        public static void AddServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient<IContactService, ContactService>();
             serviceCollection.AddTransient<IContactInformationService, ContactInformationService>();

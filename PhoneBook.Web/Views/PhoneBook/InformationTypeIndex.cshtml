@@ -1,0 +1,56 @@
+﻿@model IEnumerable<PhoneBook.Data.Entities.InformationType>
+
+@{
+    ViewData["Title"] = "Information Types";
+    var no = 1;
+}
+
+<h2>Information Types</h2>
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-md-3">
+                <a asp-action="CreateInformationType" class="btn btn-info btn-rounded"><i class="fas fa-plus-circle"></i>Add Information Type</a>
+            </div>
+        </div>
+        <div class="table-responsive mt-4">
+            <table id="myTable" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Salary</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        no++;
+                        <tr>
+                            <td>@no</td>
+                            <td>@item.Name</td>
+                            <td>
+                                <a asp-action="EditInformationType" asp-route-informationTypeId="@item.UUID" title="Edit">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a asp-action="DeleteInformationType" asp-route-informationTypeId="@item.UUID" style="color:red;" title="Delete" onclick="return confirm('Are you sure you wish to delete this information type?');">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}
