@@ -99,7 +99,8 @@ namespace PhoneBook.Web.Controllers
                 Name = contact.Name,
                 Surname = contact.Surname,
                 Company = contact.Company,
-                ContactInformations = contact.ContactInformations
+                ContactInformations = contact.ContactInformations,
+                InformationTypes = await _informationTypeService.GetInformationTypesAsync()
             };
             return View(viewContactModel);
         }

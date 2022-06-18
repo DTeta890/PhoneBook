@@ -10,5 +10,6 @@ namespace PhoneBook.Web.Models.PhoneBookViewModels
         public string Surname { get; set; }
         public string Company { get; set; }
         public IEnumerable<ContactInformation> ContactInformations { get; set; }
+        public IEnumerable<InformationType> InformationTypes { get; set; }
     }
 }
