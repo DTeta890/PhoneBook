@@ -18,6 +18,7 @@ namespace PhoneBook.Repository.Repositories
         {
             return await _context.ContactInformations.Where(c => c.UUID == contactInformationId)
                 .Include(c => c.InformationType)
+                .Include(c => c.Contact)
                 .SingleOrDefaultAsync();
         }
     }

@@ -7,7 +7,9 @@ namespace PhoneBook.Web.Models.PhoneBookViewModels
     {
         public int UUID { get; set; }
         public string Content { get; set; }
+        public int ContactId { get; set; }
         public int InformationTypeId { get; set; }
+        public string ContactName { get; set; }
         public IEnumerable<InformationType> InformationTypes { get; set; }
     }
 }

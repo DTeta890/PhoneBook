@@ -159,9 +159,11 @@ namespace PhoneBook.Web.Controllers
                 TempData["message"] = "Add types before creating contact informations!";
                 return RedirectToAction("ViewContact", new { contactId });   
             }
+            var contact = await _contactService.GetContactAsync(contactId);
             var contactInformationModel = new ContactInformationCreateDto
             {
                 ContactId = contactId,
+                ContactName = contact.Name + " " + contact.Surname,
                 InformationTypes = informationTypes
             };
             return View(contactInformationModel);
@@ -187,6 +189,8 @@ namespace PhoneBook.Web.Controllers
             {
                 UUID = contactInformation.UUID,
                 Content = contactInformation.Content,
+                ContactId = contactInformation.ContactId,
+                ContactName = contactInformation.Contact.Name + " " + contactInformation.Contact.Surname,
                 InformationTypeId = contactInformation.InformationTypeId,
                 InformationTypes = await _informationTypeService.GetInformationTypesAsync()
             };

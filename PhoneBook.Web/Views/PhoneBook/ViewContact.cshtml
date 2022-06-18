@@ -1,5 +1,55 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PhoneBook.Web.Models.PhoneBookViewModels.ViewContactDto
+
 @{
+    ViewData["Title"] = "View Contact";
+    var message = TempData["message"];
+}
+
+<h2>View Contact: @Model.Name @Model.Surname (@Model.Company)</h2>
+<div class="row">
+    <div class=" col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a asp-action="CreateContactInformation" asp-route-contactId="@Model.UUID" class="btn btn-info btn-rounded"><i class="fas fa-plus-circle"></i>&nbsp; Create Contact Information</a>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        @foreach (var item in Model.ContactInformations)
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>@item.InformationType.Name :</h3>
+                                </div>
+                                <div class="col-md-6 text-left">
+                                    <h3>@item.Content</h3>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="@Url.Action("ContactIndex", "PhoneBook" )" class="btn btn-info">
+                    <i class="fas fa-long-arrow-alt-left"></i>&nbsp; Back
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @if (message != null)
+    {
+        <script>
+            $.toast({
+                heading: 'Warning!',
+                text: '@message',
+                position: 'bottom-right',
+                icon: 'warning'
+            });
+        </script>
+    }
 }

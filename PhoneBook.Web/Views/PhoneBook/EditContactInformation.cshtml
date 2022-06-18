@@ -1,0 +1,45 @@
+﻿@model PhoneBook.Web.Models.PhoneBookViewModels.ContactInformationEditDto
+
+@{
+    ViewData["Title"] = "Edit Contact Information";
+    var typeSelected = false;
+}
+
+<h2>Edit Contact Information: @Model.ContactName</h2>
+<div class="row">
+    <div class=" col-12">
+        <form asp-action="EditContactInformation" method="post">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <input asp-for="UUID" value="@Model.UUID" hidden />
+                        <div class="col-md-6 form-group">
+                            <label>Contact Information Content</label>
+                            <input asp-for="Content" class="form-control" required />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Contact Information Type</label>
+                            <select asp-for="InformationTypeId" class="form-control">
+                                @foreach (var item in Model.InformationTypes)
+                                {
+                                    typeSelected = true ? item.UUID == Model.InformationTypeId : false;
+                                    <option selected="@typeSelected" value="@item.UUID">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="@Url.Action("ContactIndex", "PhoneBook", new { @Model.ContactId })" class="btn btn-info">
+                        <i class="fas fa-long-arrow-alt-left"></i>&nbsp; Back
+                    </a>
+                    <div class="float-right">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="far fa-save"></i>&nbsp; Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
