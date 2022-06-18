@@ -12,6 +12,8 @@ Web Layer (Application Layer, Business Logic, and UI)
 Layers are chained:
 Data -> Repository -> Service -> Web
 
+Check PhoneBookDatabaseStructure.pdf for Database Design Summery
+
 How to run the project:
 1. Write Database Connection String on settings.json -> Repository Layer
 2. Open Package Manager Console with default project (PhoneBook.Repository)
